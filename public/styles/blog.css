@@ -1,0 +1,149 @@
+.blog-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.blog-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* Blog grid container */
+.blog-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Switch to horizontal layout on larger screens */
+@media (min-width: 768px) {
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+}
+
+.blog-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.blog-content {
+  padding: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  background: #fafafa;
+}
+
+.blog-author {
+  padding: 1rem 2rem;
+  background: #667eea;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.blog-date {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-weight: normal;
+}
+
+.blog-actions {
+  padding: 1rem;
+  background: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.blog-actions form {
+  margin: 0;
+  display: inline-block;
+}
+
+.action-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  font-family: inherit;
+  min-width: 80px;
+}
+
+.edit-btn {
+  background: #28a745;
+}
+
+.edit-btn:hover {
+  background: #218838;
+  transform: translateY(-1px);
+  color: white;
+  text-decoration: none;
+}
+
+.delete-btn {
+  background: #dc3545;
+}
+
+.delete-btn:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+  color: white;
+}
+
+.no-blog {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.no-blog p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .blog-container {
+    margin: 1rem auto;
+  }
+  
+  .blog-content {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .blog-author {
+    padding: 0.8rem 1.5rem;
+  }
+}

@@ -1,0 +1,180 @@
+<%- include ("partials/header.ejs") %>
+
+<div class="form-container">
+  <h1>Edit Blog Post</h1>
+  
+  <form action="/edit/<%= blog.id %>" method="POST" class="blog-form">
+    <div class="form-group">
+      <label for="title">Author Name:</label>
+      <input 
+        type="text" 
+        id="title" 
+        name="title" 
+        value="<%= blog.title %>" 
+        required
+        class="form-input"
+      >
+    </div>
+    
+    <div class="form-group">
+      <label for="content">Blog Content:</label>
+      <textarea 
+        id="content" 
+        name="content" 
+        rows="10" 
+        required
+        class="form-textarea"
+      ><%= blog.content %></textarea>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Update Post</button>
+      <a href="/" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+  
+  <div class="delete-section">
+    <h3>Danger Zone</h3>
+    <form action="/delete/<%= blog.id %>" method="POST" class="delete-form">
+      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">
+        Delete Post
+      </button>
+    </form>
+  </div>
+</div>
+
+<style>
+.form-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.form-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.blog-form {
+  margin-bottom: 3rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 200px;
+  font-family: inherit;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #764ba2, #667eea);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.delete-section {
+  border-top: 2px solid #ff6b6b;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.delete-section h3 {
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+}
+
+.btn-danger {
+  background: #ff6b6b;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #ff5252;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
+</style>
+
+<%- include ("partials/footer.ejs") %>
