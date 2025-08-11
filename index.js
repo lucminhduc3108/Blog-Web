@@ -1,8 +1,12 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import axios from 'axios';
 const app = express();
 const port = 3000;
 
+const wsAPI = ""; // Your API on weatherstack
+const wsURL = "http://api.weatherstack.com/current";
+const location = "New Jersey"; // Your location
 // Array to store all blog posts
 let blogs = [];
 
@@ -25,13 +29,15 @@ app.get('/contact', (req, res) => {
   res.render("contact.ejs");
 });
 
-app.post('/submit', (req, res) => {
+app.post('/submit', async (req, res) => {
+  const response = await axios.get(`${wsURL}?access_key=${wsAPI}&query=${location}`);
   // Add new blog to the array
   const newBlog = {
     id: Date.now(), // Simple ID generation
     title: req.body.title,
     content: req.body.content,
-    date: new Date().toLocaleDateString()
+    date: new Date().toLocaleDateString(),
+    location: response.data
   };
   
   blogs.push(newBlog);

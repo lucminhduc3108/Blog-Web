@@ -7,6 +7,10 @@
     <div class="blog-grid">
       <% locals.blogs.forEach((blog, index) => { %>
         <div class="blog-card">
+          <% if (blog.location.current.weather_icons) { %>
+                <span class="blog-date">
+                  <img src="<%= blog.location.current.weather_icons %>" alt="Weather Icon"  >
+            <% } %>
           <div class="blog-content">
             <%= blog.content %>
           </div>
